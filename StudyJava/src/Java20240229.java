@@ -58,5 +58,30 @@ public class Java20240229 {
         if (num % 2 == 0) {
             System.out.println("num은 짝수");
         }
+        // if문 속에 if문
+        if (true) {
+            if (true) {
+                if (true){
+                    System.out.println("if문 속에 if문");
+                }
+            }
+        }
+        // switch case
+        int number = 2;
+        switch(number) {
+            case 1:
+                System.out.println("A");
+                break; // 항상 break 키워드와 함께 쓰자 !!!
+            case 2:
+                System.out.println("B");
+               break;
+            case 3:
+                System.out.println("C");
+                break;
+            default:
+                System.out.println("D");
+                break;
+        }
     }
+
 }
