@@ -30,7 +30,7 @@ public class test2Array20240305 {
 
         // 배열과 for문의 사용
         // 조건식에 배열의 갯수(.length)를 사용함
-        for (int i = 0; i < intList2.length ; i++){
+        for (int i = 0; i < intList2.length; i++){
             System.out.println(intList2[i]);
         }
 
