@@ -154,6 +154,18 @@ public class Java20240306String2 {
         if(!found){
             System.out.println("회원가입해주세요");
         }
+        System.out.println();
+        int k = 0;
+        for(; k < members.length; k++){
+            if(members[k].equalsIgnoreCase(name)){
+                System.out.println(members[k] + "님 환영합니다");
+                break;
+            }
+        }
+        if (k == members.length){
+            System.out.println("회원가입해주세요");
+        }
+
         }
 
     }

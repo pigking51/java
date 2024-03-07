@@ -30,7 +30,7 @@ public class Java20240306 {
         System.out.println(str3);
         System.out.println(str4);
 
-        // 문자열 변경
+        // 문자열 연결
         String str5 = str3.concat(str4);
         System.out.println(str5);
 
