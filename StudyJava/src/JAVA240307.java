@@ -1,3 +1,4 @@
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
@@ -31,6 +32,7 @@ public class JAVA240307 {
 
 //         // 새로운 배열에 담기 : ArrayList 사용하기
 //        ArrayList<Integer> intList3 = new ArrayList<Integer>();
+
 //        for(int i = 0; i < intList1.length; i++){
 //            if (intList1[i] > num) {
 //                intList3.add(intList1[i]);
@@ -133,6 +135,8 @@ public class JAVA240307 {
             }
         }
         System.out.print(Arrays.toString(intList1));
+
+
 
         }
 

@@ -25,7 +25,7 @@ public class test2Array20240305 {
 //            } else {
 //                System.out.print(", "+ intList2[i]);
 //            }
-//            // → inport Arrays 안쓰면 이렇게 길게 써야 같은 결과물이 나옴
+//            // → import Arrays 안쓰면 이렇게 길게 써야 같은 결과물이 나옴
 //        }
 
         // 배열과 for문의 사용
