@@ -18,7 +18,7 @@ public class Students {
     // setter : 쓰는녀석 write
     // public void 메소드이름(파라미터) → parameter
     // 파라미터 == 매개변수
-    // System.out println("Java");, System.out.println(a);
+    // System.out.println("Java");, System.out.println(a);
 
     public String getName() {
         return name;
