@@ -1,4 +1,6 @@
 public class Students {
+
+
     private String name;
     private int age;
     private String address;
@@ -8,10 +10,22 @@ public class Students {
     }
 
     public Students(String name, int age, String address, String personalNum) {
+        // 생성자의 특징(클래스를 생성하는 역할을 하는 메소드, 생성시에만 사용)
+        // 1. 반환(리턴)타입이 없음
+        // → 생성하는 역할 이외의 일이 없기때문
+        // 2. 클래스와 이름이 똑같다
+        // →
+
         this.name = name;
         this.age = age;
         this.address = address;
         this.personalNum = personalNum;
+    }
+    public Students(String name, int age, String address) {
+
+        this.name = name;
+        this.age = age;
+        this.address = address;
     }
 
     // getter : 읽는녀석 read
