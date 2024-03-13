@@ -1,3 +1,5 @@
+package ch09_20240312;
+
 public class Java20240312 {
     public static void main(String[] args) {
         // 8장 중요사항 : 자동완성기능 꼭 사용할 것!!

@@ -1,4 +1,4 @@
-class A {
+class Example {
     int m;
     int n;
     void init(int a, int b){
@@ -13,7 +13,7 @@ class A {
 }
 public class Java20240311EX {
     public static void main(String[] args) {
-        A a = new A();
+        Example a = new Example();
         a.work();
         System.out.println(a.m);
         System.out.println(a.n);

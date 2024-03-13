@@ -1,3 +1,5 @@
+package ch09_20240312;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -24,24 +26,27 @@ public class Java240312_ex {
         int [] arr = new int [] {1, 2, 8, 3, 2, 2, 2, 5, 1};
         int [] fr = new int [arr.length];
         int visited = -1; // 양의정수라는 가정 하에 나올 수 없는 값을 세팅
-        for(int i = 0; i < arr.length; i++) {
-            int count = 1; //
-            for (int j = i + 1; j < arr.length; j++) {
-                if (arr[i] == arr[j]) {
-                    count++;
-                    fr[j] = visited; // 없어도 카운트 세는것은 가능하지만,
+            for (int i = 0; i < arr.length; i++) {
+                if(fr[i] == visited){
+                    continue;
                 }
-            }
-            //[0, 0, 0, 0, -1, -1, -1, 0, -1]
-            if (fr[i] != visited) {
-                fr[i] = count;
+                int count = 1; //
+                for (int j = i + 1; j < arr.length; j++) {
+                    if (arr[i] == arr[j]) {
+                        count++;
+                        fr[j] = visited; // 없어도 카운트 세는것은 가능하지만,
+                    }
+                }
+                //[0, 0, 0, 0, -1, -1, -1, 0, -1]
+                if (fr[i] != visited) {
+                    fr[i] = count;
 
+                }
+//                if (i < 8 && fr[i] == fr[i + 1]) {
+//                    continue;
+//                }
+                System.out.println(Arrays.toString(fr));
             }
-            if(i < 7 && fr[i] == fr[i+1]){
-                fr[i+1] = 0;
-            }
-            System.out.println(Arrays.toString(fr));
-        }
             // fr = [2, 4, 1, 1, -1, -1, -1, 1, -1]
 
             for (int i = 0; i < fr.length; i++) {
@@ -51,6 +56,7 @@ public class Java240312_ex {
 
             }
 //        System.out.println(Arrays.toString(fr));
+        }
     }
-}
+
 
