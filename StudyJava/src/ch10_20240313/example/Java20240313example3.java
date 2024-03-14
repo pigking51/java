@@ -3,6 +3,7 @@ package ch10_20240313.example;
 import java.util.Arrays;
 
 class A {
+    A(){}
   static int n;
   static{
       n = 5;
@@ -14,7 +15,7 @@ public class Java20240313example3 extends A {
 
         int [] arr = new int [] {1, 2, 3, 4, 5};
 
-        int n = 3;
+//        int n = 3;
 
 
         // 1. 외부에서 5 입력해서 적용해보기
