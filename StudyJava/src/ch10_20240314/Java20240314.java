@@ -1,4 +1,4 @@
-package ch11_20240314;
+package ch10_20240314;
 
 public class Java20240314 {
     // this : 나 자신의 생성자

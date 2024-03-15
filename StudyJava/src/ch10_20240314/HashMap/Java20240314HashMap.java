@@ -1,4 +1,4 @@
-package ch11_20240314.HashMap;
+package ch10_20240314.HashMap;
 
 import java.util.HashMap;
 

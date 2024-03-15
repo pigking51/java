@@ -1,4 +1,4 @@
-package ch11_20240314.supermethod2;
+package ch10_20240314.supermethod2;
 class A{
     A(){
         this(3);

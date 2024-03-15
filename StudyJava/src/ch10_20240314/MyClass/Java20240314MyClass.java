@@ -1,4 +1,4 @@
-package ch11_20240314.MyClass;
+package ch10_20240314.MyClass;
 
 class MyClass{}
 public class Java20240314MyClass {

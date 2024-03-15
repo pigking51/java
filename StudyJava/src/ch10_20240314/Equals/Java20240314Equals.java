@@ -1,6 +1,4 @@
-package ch11_20240314.Equals;
-
-import java.util.HashMap;
+package ch10_20240314.Equals;
 
 
 class A{
