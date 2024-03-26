@@ -15,14 +15,14 @@ public class JavaEx extends Students{
 //        System.out.println(students0.toString()); // steve, Physics, 10001\
 
         System.out.println(Arrays.toString(arr1));
-        System.out.println(Sum().toString);
+//        System.out.println(Sum().toString);
         createStudentsInfo();
     }
 
-    @Override
-    public String Sum(){
-        return super.name + super.department + super.studentId;
-    }
+
+//    public String Sum(){
+//        return super.name + super.department + super.studentId;
+//    }
 
     // 두번째
     // 아래 메서드를 완성하시오
