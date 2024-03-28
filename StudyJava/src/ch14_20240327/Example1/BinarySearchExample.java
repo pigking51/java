@@ -1,8 +1,8 @@
 package ch14_20240327.Example1;
 
 public class BinarySearchExample {
-    public static void binarySearch(int arr[], int first, int last, int key){
-        int mid = (first + last)/2;
+    public static void binarySearch(int arr[], int first, int last, int key){ // 이 코드가 성립하려면 배열이 정렬되어 있어야함
+        int mid = (first + last)/2; // (last - first)/2 + last;
         while( first <= last ){
             if ( arr[mid] < key ){
                 first = mid + 1;
