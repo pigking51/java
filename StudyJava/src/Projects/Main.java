@@ -1,50 +1,23 @@
 package Projects;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
 
+    static ArrayList<User> userProfiles;
+    static ArrayList<Lecture> lectureProfiles;
+    static ArrayList<LectureRegistration> lectureRegistrations;
+
 
     public static void main(String[] args) {
 
+    // 정보 초기화
+//        InfoCreate.createInfors(userProfiles, lectureProfiles, lectureRegistrations);
+        InfoCreate.createInfors(); // → 이렇게만 할 경우 배열 파일에 있는 배열 전체 앞에 Main. 을 붙인다.
 
-    //  1. 유저, 강의, 수강관리 클래스 생성 후 ArrayList에 담기
-        //  User 정보
-        ArrayList<User> userProfiles = new ArrayList<>();
-        User userProfile1 = new User("Steve", "aweSteve123", "adqfqwdq", "Steve123@daum.net", "potatoCity", 01066544434);
-        userProfiles.add(userProfile1);
-        User userProfile2 = new User("Tom", "qwerty12", "sdad12452", "Tomcat12345@google.com", "orangeCity", 01066214452);
-        userProfiles.add(userProfile2);
-        User userProfile3 = new User("susie", "susieQ", "sususu12341", "suQ2324@naver.com", "palletTown", 01065544034);
-        userProfiles.add(userProfile3);
-        User userProfile4 = new User("James", "poojkoke", "adqfqwdq", "chlrjs@daum.net", "City", 0106623434);
-        userProfiles.add(userProfile4);
-        User userProfile5 = new User("Mike", "pokemt", "adqfqwdq", "pototo@daum.net", "potato", 01065454434);
-        userProfiles.add(userProfile5);
-
-        //  Lecture 정보
-        ArrayList<Lecture> lectureProfiles = new ArrayList<>();
-        Lecture lectureProfile1 = new Lecture("Java", "Seo", "backEnd", 1, 1, 54, 1);
-        lectureProfiles.add(lectureProfile1);
-        Lecture lectureProfile2 = new Lecture("Javascript", "Kim", "frontEnd", 2, 1, 54, 1);
-        lectureProfiles.add(lectureProfile2);
-        Lecture lectureProfile3 = new Lecture("figma", "Cheon", "UI/UX", 3, 1, 54, 1);
-        lectureProfiles.add(lectureProfile3);
-
-        //  수강신청 정보
-        ArrayList<LectureRegistration> lectureRegistrations = new ArrayList<>();
-        LectureRegistration lectureRegister1 = new LectureRegistration("aweSteve123", 1);
-        lectureRegistrations.add(lectureRegister1);
-        LectureRegistration lectureRegister2 = new LectureRegistration("qwerty12", 3);
-        lectureRegistrations.add(lectureRegister2);
-        LectureRegistration lectureRegister3 = new LectureRegistration("susieQ", 2);
-        lectureRegistrations.add(lectureRegister3);
-        LectureRegistration lectureRegister4 = new LectureRegistration("poojkoke", 3);
-        lectureRegistrations.add(lectureRegister4);
-        LectureRegistration lectureRegister5 = new LectureRegistration("pokemt", 1);
-        lectureRegistrations.add(lectureRegister5);
 
     //  2. 강의 1번 수강생의 로그인 ID 찾기
 //        for(int i = 0; i < lectureRegistrations.size(); i++){
@@ -56,6 +29,8 @@ public class Main {
 
         secondMethod(lectureRegistrations);
         System.out.println();
+        // 클래스 바로 아래에서 ArrayList 적용한 메서드
+        getLoginIdByLecture(1);
 
 //    //  3. 로그인 ID로 강의명 찾기
 //        Scanner sc3 = new Scanner(System.in);
@@ -165,6 +140,54 @@ public class Main {
             }
         }
     }
+
+    public static void getLoginIdByLecture(int x){
+        for(int i = 0; i < lectureRegistrations.size(); i++){
+            if(lectureRegistrations.get(i).lectureNum == x){
+                System.out.println("1. 학생 : " + lectureRegistrations.get(i).loginId);
+            }
+        }
+        System.out.println();
+    }
+
+    public static void getTitleByLoginId(){
+        Scanner sc3 = new Scanner(System.in);
+        System.out.println("로그인 ID를 입력해주세요 : ");
+        Object LoID = sc3.nextLine();
+
+        for(int i = 0; i < lectureRegistrations.size(); i++){
+        if(Objects.equals(lectureRegistrations.get(i).loginId, LoID)){
+            for(int j = 0; j < lectureProfiles.size(); j++){
+            if(lectureRegistrations.get(i).lectureNum == lectureProfiles.get(j).lectureNum){
+                System.out.println("2. 수강과목명 : " + lectureProfiles.get(j).lecName);
+            }
+            }
+        }
+        };
+    }
+
+    public static void getEmailByLectureTitle(){
+        Scanner sc4 = new Scanner(System.in);
+        System.out.println("강의명을 입력해주세요! : ");
+        Object LecName = sc4.nextLine();
+        Object nugu = "";
+        for(int i = 0; i < lectureProfiles.size(); i++){
+            if(Objects.equals(lectureProfiles.get(i).lecName, LecName)){
+                nugu = lectureProfiles.get(i).lectureNum;
+                for(int j = 0; j < lectureRegistrations.size(); j++){
+                    if(Objects.equals(lectureRegistrations.get(j).lectureNum, nugu)){
+                        Object lID = lectureRegistrations.get(j).loginId;
+                        for(int k = 0; k < userProfiles.size(); k++){
+                            if(Objects.equals(userProfiles.get(k).loginId, lID)){
+                                System.out.println("3. 이메일 주소 : " + userProfiles.get(k).email);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 }
 
 

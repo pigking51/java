@@ -3,7 +3,7 @@ package Projects;
 public class Lecture { // 유니크한 값을 만들어야 한다 ex) User의 경우 중복체크 하는 ID나 이메일같은거
     String lecName;
     String lecTeacher;
-    String category;
+    Category category;
     int lectureNum;
     int play;
     int during;
@@ -12,7 +12,7 @@ public class Lecture { // 유니크한 값을 만들어야 한다 ex) User의 �
     public Lecture() {
     }
 
-    public Lecture(String lecName, String lecTeacher, String category, int lectureNum, int play, int during, int grade) {
+    public Lecture(String lecName, String lecTeacher, Category category, int lectureNum, int play, int during, int grade) {
         this.lecName = lecName;
         this.lecTeacher = lecTeacher;
         this.category = category;
@@ -38,11 +38,11 @@ public class Lecture { // 유니크한 값을 만들어야 한다 ex) User의 �
         this.lecTeacher = lecTeacher;
     }
 
-    public String getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 

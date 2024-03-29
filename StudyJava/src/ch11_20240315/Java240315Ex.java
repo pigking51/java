@@ -17,29 +17,41 @@ public class Java240315Ex {
         char[] str3 = new char[]{'a', 'e', 'i', 'o', 'u'};
         int count = 0;
         int count2 = 0;
-        int count3 = 0;
-        ArrayList<String> arr = new ArrayList<>();
-       for(int i = 0; i < str2.length; i++){
-            if(str2[i] != str2[4]){
-                char num = str2[i];
-                arr.add(String.valueOf(num));
+//        ArrayList<String> arr = new ArrayList<>();
+//       for(int i = 0; i < str2.length; i++){
+//            if(str2[i] != str2[4]){
+//                char num = str2[i];
+//                arr.add(String.valueOf(num));
+//            }
+//       }
+//       for(int i = 0; i < str4.length; i++){
+//           if(arr.contains(str4[i])) {
+//               arr.remove(str4[i]);
+//               count++;
+//               for(int j = 0; j < str4.length-1; j++) {
+//                   if (arr.contains(str4[i])) {
+//                       arr.remove(str4[i]);
+//                       count++;
+//                   }
+//               }
+//           } else{
+//               count2++;
+//           }
+//       }
+//        System.out.println(arr);
+
+        // 답안
+
+        str = str.toLowerCase();
+
+        for(int i = 0; i < str.length(); i++){
+            if(str.charAt(i) == 'a' || str.charAt(i) == 'e' || str.charAt(i) == 'i' || str.charAt(i) == 'o' || str.charAt(i) == 'u'){
+                count++;
+            } else if (str.charAt(i) >= 'a' && str.charAt(i) <= 'z') {
+                count2++;
             }
-       }
-       for(int i = 0; i < str4.length; i++){
-           if(arr.contains(str4[i])) {
-               arr.remove(str4[i]);
-               count++;
-               for(int j = 0; j < str4.length-1; j++) {
-                   if (arr.contains(str4[i])) {
-                       arr.remove(str4[i]);
-                       count++;
-                   }
-               }
-           } else{
-               count2++;
-           }
-       }
-        System.out.println(arr);
+        }
+
         System.out.println("자음 : " + count2);
         System.out.println("모음 : " + count);
     }
