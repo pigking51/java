@@ -2,6 +2,7 @@ package Projects;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -10,6 +11,7 @@ public class Main {
     static ArrayList<User> userProfiles;
     static ArrayList<Lecture> lectureProfiles;
     static ArrayList<LectureRegistration> lectureRegistrations;
+    static ArrayList<Review> createReviews;
 
 
     public static void main(String[] args) {
@@ -27,10 +29,10 @@ public class Main {
 //        }
 //        System.out.println();
 
-        secondMethod(lectureRegistrations);
-        System.out.println();
+//        secondMethod(lectureRegistrations);
+//        System.out.println();
         // 클래스 바로 아래에서 ArrayList 적용한 메서드
-        getLoginIdByLecture(1);
+//        getLoginIdByLecture(1);
 
 //    //  3. 로그인 ID로 강의명 찾기
 //        Scanner sc3 = new Scanner(System.in);
@@ -63,8 +65,8 @@ public class Main {
 //            }
 //        };
 
-        thirdMethod(lectureRegistrations, lectureProfiles);
-        System.out.println();
+//        thirdMethod(lectureRegistrations, lectureProfiles);
+//        System.out.println();
 
 //    //  4. 강의명으로 수강생들의 이메일 찾기
 //        Scanner sc4 = new Scanner(System.in);
@@ -86,8 +88,12 @@ public class Main {
 //                }
 //            }
 //        }
-        fourthMethod(lectureProfiles, lectureRegistrations, userProfiles);
-        System.out.println();
+//        fourthMethod(lectureProfiles, lectureRegistrations, userProfiles);
+//        System.out.println();
+
+
+        createReview("x", 1,2,"a");
+
    }
     //  2. 강의 1번 수강생의 로그인 ID 찾기(메소드)
    public static void secondMethod(ArrayList<LectureRegistration> x){
@@ -188,6 +194,48 @@ public class Main {
         }
     }
 
+    MyException me1 = new MyException();
+    MyException me2 = new MyException("예외 메시지 : MyException");
+
+    public static boolean createReview(String x, int y, int z, String a) {
+        try{
+        Scanner sc5 = new Scanner(System.in);
+        System.out.println("Id를 입력해주세요 : ");
+        x = sc5.next();
+        for(int i = 0; i < userProfiles.size(); i++){
+            if(!(Objects.equals(x, userProfiles.get(i).loginId))){
+                throw new MyException("잘못된 ID입니다.");
+            }
+        }
+        System.out.println("강의 Id를 입력해주세요 : ");
+        y = sc5.nextInt();
+        for(int i = 0; i < lectureRegistrations.size(); i++){
+            if(y == lectureRegistrations.get(i).lectureNum &&
+            lectureRegistrations.get(i).loginId.equals(x)){
+                break;
+            }else{
+                throw new MyException("수강하지 않은 과목입니다.");
+            }
+        }
+        System.out.println("점수를 입력해주세요(1~10점 사이) : ");
+        z = sc5.nextInt();
+        if(!(z >= 0 && z <= 10)){
+            throw new MyException("점수가 잘못되었습니다.");
+        }
+        System.out.println("리뷰를 입력해주세요 : ");
+        a = sc5.next();
+        System.out.println();
+
+        }
+        catch (MyException e){
+            System.out.println("505 오류");
+            System.out.println(e.getMessage());
+        }
+
+        Review createReview = new Review(x,y,z,a);
+        createReviews.add(createReview);
+          return true;
+    }
 }
 
 

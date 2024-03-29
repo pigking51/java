@@ -40,6 +40,9 @@ public class InfoCreate {
         Main.lectureRegistrations.add(lectureRegister4);
         LectureRegistration lectureRegister5 = new LectureRegistration("pokemt", 1);
         Main.lectureRegistrations.add(lectureRegister5);
+
+        //  Review 정보
+        Main.createReviews = new ArrayList<>();
     }
 
 }
