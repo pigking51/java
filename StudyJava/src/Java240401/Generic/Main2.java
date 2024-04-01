@@ -2,23 +2,23 @@ package Java240401.Generic;
 
 import javax.xml.crypto.dsig.keyinfo.KeyValue;
 
-class keyValue<k,v> { // k, v흔히 이렇게 나타내는 것 뿐이지 다르게 써도 상관 없긴함(for문의 i, k... 같은거)
-   private k key;
-   private v value;
+class keyValue<K,V> { // k, v흔히 이렇게 나타내는 것 뿐이지 다르게 써도 상관 없긴함(for문의 i, k... 같은거)
+   private K key;
+   private V value;
 
-    public k getKey() {
+    public K getKey() {
         return key;
     }
 
-    public void setKey(k key) {
+    public void setKey(K key) {
         this.key = key;
     }
 
-    public v getValue() {
+    public V getValue() {
         return value;
     }
 
-    public void setValue(v value) {
+    public void setValue(V value) {
         this.value = value;
     }
 }

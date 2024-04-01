@@ -14,7 +14,7 @@ class GenericMethods { // 일반클래스 안에 정의한 제네릭메소드 �
     public <K,V> void method3(K k, V v){ // 2개의 제네릭타입을 사용
         System.out.println(k + " " + v);
     }
-    public <A, B, C> void method4(A a, B b, C c){ // 3개의 제네릭타입을 사용
+    public <AA, BB, CC> void method4(AA a, BB b, CC c){ // 3개의 제네릭타입을 사용
         System.out.println(a + " " + b + " " + c);
     }
     
