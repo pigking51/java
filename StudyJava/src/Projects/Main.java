@@ -198,21 +198,32 @@ public class Main {
     MyException me2 = new MyException("예외 메시지 : MyException");
 
     public static boolean createReview(String x, int y, int z, String a) {
+        // return형 메소드로 만들어도 void형태로 만들어도 문제없음
+        // → 활용범위가 넓으니 이쪽으로 사용하는 것이 좋음
         try{
         Scanner sc5 = new Scanner(System.in);
         System.out.println("Id를 입력해주세요 : ");
+            // 강의 id는 이전에 리뷰작성한게 있는지 확인하는 것이기에
+            // 입력받은거랑 비교하는 것이 아닌 기존에 있는 자료와 비교하여 결과
+            // 리턴하는 것임
         x = sc5.next();
         for(int i = 0; i < userProfiles.size(); i++){
-            if(!(Objects.equals(x, userProfiles.get(i).loginId))){
+            if(Objects.equals(x, userProfiles.get(i).loginId)){
+                System.out.println("확인");
+                break;
+
+            } else{
                 throw new MyException("잘못된 ID입니다.");
             }
         }
-        System.out.println("강의 Id를 입력해주세요 : ");
+        System.out.println("강의 Id를 입력해주세요 : "); 
         y = sc5.nextInt();
         for(int i = 0; i < lectureRegistrations.size(); i++){
+
             if(y == lectureRegistrations.get(i).lectureNum &&
             lectureRegistrations.get(i).loginId.equals(x)){
                 break;
+                // boolean 타입의 변수이름은 isxxx 혹은 canxxx 등의 이름을 사용한다고 함
             }else{
                 throw new MyException("수강하지 않은 과목입니다.");
             }
@@ -238,6 +249,13 @@ public class Main {
     }
 }
 
+// for(Review : reivews){ → for each문(요즘 개발자들이 많이 쓰는 반복문 사용이 편리함/ 일반적인 for문과는 구분됨)
+// }
+// → i = 0 일때 Review review = reviews[0];
+//   i = 1 일때 Review review = reviews[1];
+// ...
+//   i = n-1   Review review = reviews[n-1];
+// for each문의 단점 : 배열에만 사용가능함
 
 
 

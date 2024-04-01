@@ -2,11 +2,14 @@ package Projects;
 
 import java.util.Scanner;
 
+// 한번 쓴 필드 변수는 그냥 버리는 것이 좋음?
+//  → 개발자들은 삭제되었다는 표시만 한다고 함
+
 public class Review {
 //    private String reviewId;
     private String loginId;
     private int lectureId;
-    private int rating;
+    private int rating; // 1점 ~ 10점
     private String text;
 
     public Review() {
@@ -49,5 +52,11 @@ public class Review {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    @Override
+    public String toString() {
+//        return "(" + reviewId + ": " + rating + ": " + ;
+        return "(" + loginId + ": ," + lectureId + ": ," + rating + ": ," + text + ": )";
     }
 }
