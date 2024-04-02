@@ -1,10 +1,10 @@
 package Projects;
 
+import org.w3c.dom.ls.LSOutput;
+
+import java.lang.reflect.Array;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Objects;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 
@@ -12,6 +12,9 @@ public class Main {
     static ArrayList<Lecture> lectureProfiles;
     static ArrayList<LectureRegistration> lectureRegistrations;
     static ArrayList<Review> createReviews;
+    static ArrayList<Teacher> teacherProfiles;
+    static List<String> getLectureTitleByTeacherIds = new ArrayList<>();
+
 
 
     public static void main(String[] args) {
@@ -92,7 +95,13 @@ public class Main {
 //        System.out.println();
 
 
-        createReview("x", 1,2,"a");
+//        createReview("x", 1,2,"a");
+
+
+         getTeacherByLectureId();
+
+        getLectureTitleListByTeacherId();
+
 
    }
     //  2. 강의 1번 수강생의 로그인 ID 찾기(메소드)
@@ -247,6 +256,31 @@ public class Main {
         createReviews.add(createReview);
           return true;
     }
+
+   public static boolean getTeacherByLectureId(){
+        Scanner sc6 = new Scanner(System.in);
+       System.out.println("과목 ID를 입력해주세요 : ");
+       Object subId = sc6.nextInt();
+        for(int i = 0; i < lectureProfiles.size(); i++){
+            if(Objects.equals(subId, lectureProfiles.get(i).lectureNum)){
+                System.out.println("해당 과목의 선생님은 " + lectureProfiles.get(i).lecTeacher + "입니다.");
+            }
+        }
+        return true;
+   }
+   public static boolean getLectureTitleListByTeacherId(){
+        Scanner sc7 = new Scanner(System.in);
+       System.out.println("선생님 이름을 입력해주세요 : ");
+       Object tName = sc7.next();
+       getLectureTitleByTeacherIds.add(String.valueOf(tName));
+       for(int i = 0; i < lectureProfiles.size(); i++){
+           if(Objects.equals(tName, lectureProfiles.get(i).lecTeacher)){
+               getLectureTitleByTeacherIds.add(lectureProfiles.get(i).lecName);
+           }
+       }
+       System.out.println(getLectureTitleByTeacherIds);
+        return true;
+   }
 }
 
 // for(Review : reivews){ → for each문(요즘 개발자들이 많이 쓰는 반복문 사용이 편리함/ 일반적인 for문과는 구분됨)

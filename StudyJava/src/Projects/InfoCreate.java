@@ -43,6 +43,16 @@ public class InfoCreate {
 
         //  Review 정보
         Main.createReviews = new ArrayList<>();
+
+        // 선생님 정보
+        Main.teacherProfiles = new ArrayList<>();
+        Teacher teacherProfiles1 = new Teacher("Seo", "seo12345", "sedklerk", "seo12345@naver.com", "potatoCity", 123456789 );
+        Main.teacherProfiles.add(teacherProfiles1);
+        Teacher teacherProfiles2 = new Teacher("Cheon", "cheon4556", "sshdde", "cheon@google.com", "BreadCity", 81547912 );
+        Main.teacherProfiles.add(teacherProfiles2);
+        Teacher teacherProfiles3 = new Teacher("Kim", "kim135631a", "hhraca", "kim1st@daum.net", "OrangeCity", 5565112 );
+        Main.teacherProfiles.add(teacherProfiles3);
+
     }
 
 }
