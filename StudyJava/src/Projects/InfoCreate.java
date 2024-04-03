@@ -53,6 +53,14 @@ public class InfoCreate {
         Teacher teacherProfiles3 = new Teacher("Kim", "kim135631a", "hhraca", "kim1st@daum.net", "OrangeCity", 5565112 );
         Main.teacherProfiles.add(teacherProfiles3);
 
+        // 게시판 정보
+
+
+        // 답글 정보
+
+//        Reply setReply1 = new Reply("spring0403", "이렇게하면 저장이되나", "aweSteve123", "content" );
+//        FreeBoard.replies.add(setReply1);
+
     }
 
 }

@@ -6,20 +6,19 @@ public class Reply {
 
     String id;
     String content;
-    String logIn;
+    String logInId;
     FreeBoard title;
     FreeBoard replies;
 
     public Reply() {
     }
 
-    public Reply(String id, String content, String logIn, FreeBoard title) {
+    public Reply(String id, String content, String logInId, FreeBoard title) {
         this.id = id;
         this.content = content;
-        this.logIn = logIn;
+        this.logInId = logInId;
         this.title = title;
     }
-
     public String getId() {
         return id;
     }
@@ -36,12 +35,12 @@ public class Reply {
         this.content = content;
     }
 
-    public String getLogIn() {
-        return logIn;
+    public String getLogInId() {
+        return logInId;
     }
 
-    public void setLogIn(String logIn) {
-        this.logIn = logIn;
+    public void setLogInId(String logInId) {
+        this.logInId = logInId;
     }
 
     public FreeBoard getTitle() {

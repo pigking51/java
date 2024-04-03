@@ -9,7 +9,7 @@ public class FreeBoard {
     String content;
     String loginId;
 
-    List<Reply> replies = new ArrayList<>();
+    static List<Reply> replies = new ArrayList<>();
 
     public FreeBoard() {
     }
@@ -51,5 +51,9 @@ public class FreeBoard {
 
     public void setLoginId(String loginId) {
         this.loginId = loginId;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(replies);
     }
 }
