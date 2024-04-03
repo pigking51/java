@@ -43,6 +43,16 @@ public class InfoCreate {
 
         //  Review 정보
         Main.createReviews = new ArrayList<>();
+        Review createReview1 = new Review("aweSteve123", 1, 5, "ball");
+        Main.createReviews.add(createReview1);
+        Review createReview2 = new Review("qwerty12", 3, 3, "bear");
+        Main.createReviews.add(createReview2);
+        Review createReview3 = new Review("susieQ", 2, 8, "beer");
+        Main.createReviews.add(createReview3);
+        Review createReview4 = new Review("poojkoke", 3, 6, "balling");
+        Main.createReviews.add(createReview4);
+        Review createReview5 = new Review("pokemt", 1, 7, "base");
+        Main.createReviews.add(createReview5);
 
         // 선생님 정보
         Main.teacherProfiles = new ArrayList<>();
@@ -58,9 +68,12 @@ public class InfoCreate {
 
         // 답글 정보
 
-//        Reply setReply1 = new Reply("spring0403", "이렇게하면 저장이되나", "aweSteve123", "content" );
-//        FreeBoard.replies.add(setReply1);
+        Reply setReply1 = new Reply("spring0403", "이렇게하면 저장이되나", "aweSteve123");
+        FreeBoard.replies.add(setReply1);
+
+
 
     }
+
 
 }

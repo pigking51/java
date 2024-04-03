@@ -1,23 +1,24 @@
 package Projects;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Reply {
 
     String id;
     String content;
     String logInId;
-    FreeBoard title;
-    FreeBoard replies;
+    List<Reply> replies;
+
+
 
     public Reply() {
     }
 
-    public Reply(String id, String content, String logInId, FreeBoard title) {
+    public Reply(String id, String content, String logInId) {
         this.id = id;
         this.content = content;
         this.logInId = logInId;
-        this.title = title;
     }
     public String getId() {
         return id;
@@ -43,15 +44,9 @@ public class Reply {
         this.logInId = logInId;
     }
 
-    public FreeBoard getTitle() {
-        return title;
-    }
-
-    public void setTitle(FreeBoard title) {
-        this.title = title;
-    }
-
-    public void setReplies(FreeBoard replies) {
-        this.replies = replies;
+    public void setReplies(List<Reply> replies) {
+       Reply setReply1 = new Reply("x", "y", "z");
+       replies.add(setReply1);
+        this.replies = FreeBoard.replies;
     }
 }

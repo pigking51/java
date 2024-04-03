@@ -22,7 +22,7 @@ public class Main {
     // 정보 초기화
 //        InfoCreate.createInfors(userProfiles, lectureProfiles, lectureRegistrations);
         InfoCreate.createInfors(); // → 이렇게만 할 경우 배열 파일에 있는 배열 전체 앞에 Main. 을 붙인다.
-
+        System.out.println(FreeBoard.replies.get(0).id);
 
     //  2. 강의 1번 수강생의 로그인 ID 찾기
 //        for(int i = 0; i < lectureRegistrations.size(); i++){
@@ -101,6 +101,13 @@ public class Main {
          getTeacherByLectureId();
 
         getLectureTitleListByTeacherId();
+
+        createReview("x",1, 1, "a");
+
+        // 답글 정보
+
+
+
 
 
    }
@@ -206,44 +213,46 @@ public class Main {
     MyException me1 = new MyException();
     MyException me2 = new MyException("예외 메시지 : MyException");
 
-    public static boolean createReview(String x, int y, int z, String a) {
+    public static boolean createReview(String loginID, int lectureId, int rating, String text) {
         // return형 메소드로 만들어도 void형태로 만들어도 문제없음
         // → 활용범위가 넓으니 이쪽으로 사용하는 것이 좋음
         try{
-        Scanner sc5 = new Scanner(System.in);
-        System.out.println("Id를 입력해주세요 : ");
-            // 강의 id는 이전에 리뷰작성한게 있는지 확인하는 것이기에
-            // 입력받은거랑 비교하는 것이 아닌 기존에 있는 자료와 비교하여 결과
-            // 리턴하는 것임
-        x = sc5.next();
-        for(int i = 0; i < userProfiles.size(); i++){
-            if(Objects.equals(x, userProfiles.get(i).loginId)){
-                System.out.println("확인");
+//        System.out.println("Id를 입력해주세요 : ");
+//            // 강의 id는 이전에 리뷰작성한게 있는지 확인하는 것이기에
+//            // 입력받은거랑 비교하는 것이 아닌 기존에 있는 자료와 비교하여 결과
+//            // 리턴하는 것임
+        for(int i = 0; i < createReviews.size(); i++){
+             loginID = createReviews.get(i).getLoginId();
+            lectureId = createReviews.get(i).getLectureId();
+             if (!(Objects.equals(lectureId, lectureRegistrations.get(i).lectureNum)) || !(lectureRegistrations.get(i).loginId.contains(loginID))) {
                 break;
-
-            } else{
+             }
+            else if((Objects.equals(lectureId, lectureRegistrations.get(i).lectureNum)) && (lectureRegistrations.get(i).loginId.contains(loginID))){
+                System.out.println("이전에 입력하신 후기가 있습니다. 중복으로 후기를 작성하실 수 없습니다.");
+                    break;
+            } else if(!(Objects.equals(lectureId, lectureRegistrations.get(i).lectureNum)) && !(lectureRegistrations.get(i).loginId.contains(loginID))){
                 throw new MyException("잘못된 ID입니다.");
             }
         }
-        System.out.println("강의 Id를 입력해주세요 : "); 
-        y = sc5.nextInt();
-        for(int i = 0; i < lectureRegistrations.size(); i++){
 
-            if(y == lectureRegistrations.get(i).lectureNum &&
-            lectureRegistrations.get(i).loginId.equals(x)){
-                break;
-                // boolean 타입의 변수이름은 isxxx 혹은 canxxx 등의 이름을 사용한다고 함
-            }else{
-                throw new MyException("수강하지 않은 과목입니다.");
-            }
-        }
+
+//        for(int i = 0; i < lectureRegistrations.size(); i++){
+//
+//            if(lectureId == lectureRegistrations.get(i).lectureNum &&
+//            lectureRegistrations.get(i).loginId.equals(loginID)){
+//                break;
+//                // boolean 타입의 변수이름은 isxxx 혹은 canxxx 등의 이름을 사용한다고 함
+//            }else{
+//                throw new MyException("수강하지 않은 과목입니다.");
+//            }
+//        }
         System.out.println("점수를 입력해주세요(1~10점 사이) : ");
-        z = sc5.nextInt();
-        if(!(z >= 0 && z <= 10)){
+//        rating = createReviews.get().getRating();
+        if(!(rating >= 0 && rating <= 10)){
             throw new MyException("점수가 잘못되었습니다.");
         }
         System.out.println("리뷰를 입력해주세요 : ");
-        a = sc5.next();
+        text = sc5.next();
         System.out.println();
 
         }
@@ -252,7 +261,7 @@ public class Main {
             System.out.println(e.getMessage());
         }
 
-        Review createReview = new Review(x,y,z,a);
+        Review createReview = new Review(loginID,lectureId,rating,text);
         createReviews.add(createReview);
           return true;
     }
