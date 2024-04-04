@@ -246,7 +246,9 @@ public class Main {
 //                throw new MyException("수강하지 않은 과목입니다.");
 //            }
 //        }
+        Scanner sc5 = new Scanner(System.in);
         System.out.println("점수를 입력해주세요(1~10점 사이) : ");
+        rating =Integer.valueOf(sc5.next());
 //        rating = createReviews.get().getRating();
         if(!(rating >= 0 && rating <= 10)){
             throw new MyException("점수가 잘못되었습니다.");
