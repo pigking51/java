@@ -1,4 +1,4 @@
-package Java240401.example;
+package ch16_Java20240401.example;
 
 class MyGeneric <T>{
     T t;

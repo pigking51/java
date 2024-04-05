@@ -1,4 +1,4 @@
-package Java240401.example.example3;
+package ch16_Java20240401.example.example3;
 
 class A{}
 interface B{}

@@ -1,11 +1,11 @@
 package Projects;
 public class Teacher {
-    String name;
-    String teacherId;
-    String password;
-    String email;
-    String address;
-    int call;
+    private String name;
+    private String teacherId;
+    private String password;
+    private String email;
+    private String address;
+    private int call;
 
     public Teacher() {
     }

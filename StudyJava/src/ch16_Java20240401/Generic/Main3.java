@@ -1,4 +1,4 @@
-package Java240401.Generic;
+package ch16_Java20240401.Generic;
 
 class MyClassABC<A, B, C>{
     private A a;

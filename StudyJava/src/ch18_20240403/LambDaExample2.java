@@ -17,11 +17,11 @@ public class LambDaExample2 {
         strings.add("kiwi");
 
         // 길이가 5 이상인 문자열을 필터링하는 기능
-        System.out.println("길이가 5 이상인 문자열 : " );
+        System.out.println("길이가 5 이상인 문자열 : ");
 //        FilterAndPrint(strings, (str) -> { return str.length() > 5;});
         FilterAndPrint(strings, (str) -> str.length() > 5);
         // 문자열이 'a'로 시작하는 아이템을 필터링하는 기능
-        System.out.println("a로 시작하는 문자열 : " );
+        System.out.println("a로 시작하는 문자열 : ");
         FilterAndPrint(strings, (str) -> str.startsWith("a")); // 이거 기억 못했던 것 → 복습할때 제대로 이해하기
         System.out.println();
         FilterAndPrint(strings, (str) -> str.endsWith("e"));

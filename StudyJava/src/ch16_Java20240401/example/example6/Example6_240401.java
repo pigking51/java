@@ -1,4 +1,4 @@
-package Java240401.example.example6;
+package ch16_Java20240401.example.example6;
 
 class A <K> {
     K k;

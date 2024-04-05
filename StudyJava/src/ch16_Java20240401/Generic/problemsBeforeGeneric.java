@@ -1,4 +1,4 @@
-package Java240401.Generic;
+package ch16_Java20240401.Generic;
 
 // Apple 클래스와 Apple 클래스를 담을 수 있는 Goods1 클래스
 class Apple {}

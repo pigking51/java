@@ -8,7 +8,6 @@ public class Reply {
     String id;
     String content;
     String logInId;
-    List<Reply> replies;
 
 
 
@@ -44,9 +43,4 @@ public class Reply {
         this.logInId = logInId;
     }
 
-    public void setReplies(List<Reply> replies) {
-       Reply setReply1 = new Reply("x", "y", "z");
-       replies.add(setReply1);
-        this.replies = FreeBoard.replies;
-    }
 }

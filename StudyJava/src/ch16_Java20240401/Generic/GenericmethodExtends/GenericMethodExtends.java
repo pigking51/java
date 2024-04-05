@@ -1,4 +1,4 @@
-package Java240401.Generic.GenericmethodExtends;
+package ch16_Java20240401.Generic.GenericmethodExtends;
 
 class AA {
     public <T extends Number> void methods1(T t){ // 이렇게 하면 Number가 가진 모든 것을 사용할 수 있음

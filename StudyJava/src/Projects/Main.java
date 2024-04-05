@@ -153,8 +153,8 @@ public class Main {
                     if(Objects.equals(lectureRegistrations.get(j).lectureNum, nugu)){
                         Object lID = lectureRegistrations.get(j).loginId;
                         for(int k = 0; k < userProfiles.size(); k++){
-                            if(Objects.equals(userProfiles.get(k).loginId, lID)){
-                                System.out.println(userProfiles.get(k).email);
+                            if(Objects.equals(userProfiles.get(k).getLoginId(), lID)){
+                                System.out.println(userProfiles.get(k).getEmail());
                             }
                         }
                     }
@@ -200,8 +200,8 @@ public class Main {
                     if(Objects.equals(lectureRegistrations.get(j).lectureNum, nugu)){
                         Object lID = lectureRegistrations.get(j).loginId;
                         for(int k = 0; k < userProfiles.size(); k++){
-                            if(Objects.equals(userProfiles.get(k).loginId, lID)){
-                                System.out.println("3. 이메일 주소 : " + userProfiles.get(k).email);
+                            if(Objects.equals(userProfiles.get(k).getLoginId(), lID)){
+                                System.out.println("3. 이메일 주소 : " + userProfiles.get(k).getEmail());
                             }
                         }
                     }
@@ -292,6 +292,13 @@ public class Main {
        System.out.println(getLectureTitleByTeacherIds);
         return true;
    }
+
+   // Reply 객체가 생성될때 해당 글의 객체에 있는 replies 필드에 등록
+    public static boolean setRepliesIntoReply(){
+        if()
+        return true;
+    }
+
 }
 
 // for(Review : reivews){ → for each문(요즘 개발자들이 많이 쓰는 반복문 사용이 편리함/ 일반적인 for문과는 구분됨)

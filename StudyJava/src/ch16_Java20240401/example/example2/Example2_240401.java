@@ -1,4 +1,4 @@
-package Java240401.example.example2;
+package ch16_Java20240401.example.example2;
 
 class MyClass{
     public <T> T MyMethod(T t){

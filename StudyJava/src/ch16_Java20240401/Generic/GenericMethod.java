@@ -1,4 +1,4 @@
-package Java240401.Generic;
+package ch16_Java20240401.Generic;
 
 class GenericMethods { // 일반클래스 안에 정의한 제네릭메소드 예제
     public int method0 (int a){ // 일반 메소드

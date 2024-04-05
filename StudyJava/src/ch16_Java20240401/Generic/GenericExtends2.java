@@ -1,4 +1,4 @@
-package Java240401.Generic;
+package ch16_Java20240401.Generic;
 
 class E {}
 class F extends E {}
@@ -24,7 +24,7 @@ public class GenericExtends2 {
     public static void main(String[] args) {
         Test test = new Test();
         // case 1 : Goods<E>
-        test.method1(new Goods3<E>()); // A만 가능
+        test.method1(new Goods3<E>()); // E만 가능
         //test.method1(new Goods3<F>()); // 불가능
 
         // case 2 : <?>

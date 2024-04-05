@@ -1,4 +1,4 @@
-package Java240401.Generic;
+package ch16_Java20240401.Generic;
 
 class A{}
 class B extends A{}
@@ -7,7 +7,7 @@ class C extends B{}
 class D <T extends B> {
     // <T>는 모든 클래스가 올 수 있으나
     // <T extends B>는 B와 B의 자식만 올 수 있음 !!!! (A는 안되고 B, C만 됨)
-    // 주의 ) D가 B를 상속하는 것이 아님(A, B, C와 아무런 상관없음)
+    // 주의) D가 B를 상속하는 것이 아님(A, B, C와 아무런 상관없음)
 
     private T t;
     public T get() { return t;}

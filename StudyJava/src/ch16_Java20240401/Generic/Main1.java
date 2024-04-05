@@ -1,4 +1,4 @@
-package Java240401.Generic;
+package ch16_Java20240401.Generic;
 
 class MyClass<T>{ // T는 어느 클래스던지 될 수 있음
     private T t; // t는 변수이기에 이름 아무렇게나 지어도 됨(T는 클래스를 인스턴스화 할때 반드시 정함 / new 만들때)
