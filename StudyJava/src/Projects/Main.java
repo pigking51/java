@@ -294,10 +294,10 @@ public class Main {
    }
 
    // Reply 객체가 생성될때 해당 글의 객체에 있는 replies 필드에 등록
-    public static boolean setRepliesIntoReply(){
-        if()
-        return true;
-    }
+//    public static boolean setRepliesIntoReply(){
+//        if()
+//        return true;
+//    }
 
 }
 
