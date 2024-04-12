@@ -29,6 +29,11 @@ select 이름, 생일, timestampdiff(day, 생일, now()) as 만나이,
 -- 4번문제
 select * from 주문
 	where adddate(요청일, 7)  <= 발송일;
+	
+select *,
+datediff(발송일, 요청일) as 지연일수
+from 주문
+	where datediff(발송일, 요청일) >= 7;
 
 -- 5번문제
 select 담당자명, 고객회사명, 도시, substr(replace(replace(도시, '특별시', '대도시'),'광역시', '대도시'), 3) as 도시구분,
@@ -47,21 +52,43 @@ case when 마일리지 >= 100000 then 'vvip'
 	end as 마일리지구분
 from 고객;
 
+select 담당자명, 고객회사명, 도시,
+if(도시 like '%특별시%' or 도시 like '%광역시%', 
+		'대도시', '도시') as 도시구분,
+	마일리지,
+	case when 마일리지 >= 100000 then 'vvip'
+	when 마일리지 >= 10000 then 'vip'
+	else '일반고객'
+	end	as 마일리지구분
+from 고객;
+
 -- 6번문제
 select 주문번호, 고객번호, 주문일, year(주문일) as 주문년도, quarter(주문일) as 주문분기, 
 month(주문일) as 주문월, day(주문일) as 주문일,  
 dayname(주문일) as 주문요일, 
-case when cast(dayofweek(주문일) as unsigned) = '1' then '일'
-	when cast(dayofweek(주문일) as unsigned) = '2' then '월'
-	when cast(dayofweek(주문일) as unsigned) = '3' then '화'
-	when cast(dayofweek(주문일) as unsigned) = '4' then '수'
-	when cast(dayofweek(주문일) as unsigned) = '5' then '목'
-	when cast(dayofweek(주문일) as unsigned) = '6' then '금'
-	when cast(dayofweek(주문일) as unsigned) = '7' then '토'
+case when cast(dayofweek(주문일) as unsigned) = '1' then '일요일'
+	when cast(dayofweek(주문일) as unsigned) = '2' then '월요일'
+	when cast(dayofweek(주문일) as unsigned) = '3' then '화요일'
+	when cast(dayofweek(주문일) as unsigned) = '4' then '수요일'
+	when cast(dayofweek(주문일) as unsigned) = '5' then '목요일'
+	when cast(dayofweek(주문일) as unsigned) = '6' then '금요일'
+	when cast(dayofweek(주문일) as unsigned) = '7' then '토툐일'
 	end
 as 한글요일 from 주문;
 
 
+select 주문번호, 고객번호, 주문일, year(주문일) as 주문년도, quarter(주문일) as 주문분기, 
+month(주문일) as 주문월, day(주문일) as 주문일,  
+dayname(주문일) as 주문요일,
+case weekday(주문일) when 0 then '월요일'
+					when 1 then '화요일'
+					when 2 then '수요일'
+					when 3 then '목요일'
+					when 4 then '금요일'
+					when 5 then '토요일'
+					when 6 then '일요일'
+end as 한글요일
+from 주문;
 
 
 	

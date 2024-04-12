@@ -2,9 +2,9 @@
 /*
 <join의 종류>
 cross join
-inner join
-outer join
-self join
+inner join - 두 테이블 교집합 선정과정
+outer join - 
+self join -
 */
 -- 크로스 조인 : 한쪽 테이블의 각 행마다 다른 쪽 테이블의 모든 행이 한번씩
 -- 매칭되는 조인을 의미
