@@ -1,0 +1,222 @@
+240919
+
+nginx - 웹 페이지 빌드해주는 거
+
+cmd로 위치 찾은 후 사용할 것
+→ 만약 오른쪽으로 해당 프로그램 눌렀을때 명령 프롬프트로 열기 있으면 그걸로 해도 됨
+
+관련 커맨드
+
+시작
+start nginx
+
+종료
+nginx -s stop
+
+재시작
+nginx -s reload
+
+→ 이거쓰면 프론트쪽에서 npm start 사용할 필요 없고, npm run build를 사용함
+
+// spring 빌드 명령
+mvnw clean package
+
+// spring 빌드된거 서버 실행 명령
+java -jar 파일이름.jar
+→ 이것도 종료할때는 ctrl + c 누르면 됨
+
+→ 만약 The JAVA_HOME environment variable is not defined correctly,
+this environment variable is needed to run this program. 이런 오류가 발생한다면
+제어판에서 환경변수 검색 - 시스템 환경변수 편집
+- 그 안의 환경변수 클릭 - 시스템 변수에 JAVA_HOME추가
+
+JAVA_HOME C:\Program Files\Java\jdk-21 또는
+	    C:\Users\admin\jdks\corretto-21.0.3
+Path           %JAVA_HOME%\bin\ 추가
+
+jenkins - 지속적인 ci 뭐시기 하는데 가장 많이 쓰는 도구
+https://joyfulhome.tistory.com/262
+→ 제대로 못들었으니 해당 주소보고 대충 파악해보기
+
+-> 그래도 안 될때
+ inteliJ에서 M누르고 현재 프로젝트 폴더 안에있는 Lifecycle - clean을 눌러주고
+그 아래있는 package를 실행시키면 됨(그러면 target폴더 생성)
+ → 그 안에 있는 jar 파일이 backend의 앱이라고 보면 됨
+
+// nginx.conf파일 내용을 변경해줘야함
+# 기본 설정
+worker_processes  1;  # 워커 프로세스 수 설정 (CPU 수에 맞게 조정 가능)
+
+events {
+    worker_connections  1024;  # 한 워커 프로세스가 동시에 처리할 수 있는 최대 연결 수
+}
+
+http {
+    include       mime.types;  # MIME 타입 설정 포함
+    default_type  application/octet-stream;  # 기본 MIME 타입
+
+    # 로그 형식 및 파일 설정 (옵션, 필요 시 활성화)
+    # log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+    #                  '$status $body_bytes_sent "$http_referer" '
+    #                  '"$http_user_agent" "$http_x_forwarded_for"';
+    # access_log  logs/access.log  main;
+
+    sendfile        on;  # 파일 전송 최적화
+    keepalive_timeout  65;  # Keep-Alive 타임아웃 설정
+
+    # 서버 블록
+    server {
+        listen 81;  # HTTP 포트 (필요 시 HTTPS로 변경 가능)
+        server_name _;  # 서버 이름 (도메인 또는 IP 주소)  ==> 모든 IP에서 접근 허용
+
+        root C:/Users/admin/Desktop/Project_2-master/build;  # 리액트 빌드 파일 경로
+        index index.html index.htm;
+
+        location / {
+            try_files $uri $uri/ /index.html;  # 리액트 라우팅을 위한 설정
+        }
+
+        # API 요청을 스프링 부트 서버로 프록시
+        location /api/ {
+            proxy_pass http://localhost:8081;  # 스프링 부트 서버 주소
+	# 여기서부터 4개의 코드는 거의 변경할 일 없음
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+        }
+    }
+}
+
+// 기존 nginx.conf파일 내용
+
+#user  nobody;
+worker_processes  1;
+
+#error_log  logs/error.log;
+#error_log  logs/error.log  notice;
+#error_log  logs/error.log  info;
+
+#pid        logs/nginx.pid;
+
+
+events {
+    worker_connections  1024;
+}
+
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    #log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+    #                  '$status $body_bytes_sent "$http_referer" '
+    #                  '"$http_user_agent" "$http_x_forwarded_for"';
+
+    #access_log  logs/access.log  main;
+
+    sendfile        on;
+    #tcp_nopush     on;
+
+    #keepalive_timeout  0;
+    keepalive_timeout  65;
+
+    #gzip  on;
+
+    server {
+        listen       80;
+        server_name  localhost;
+
+        #charset koi8-r;
+
+        #access_log  logs/host.access.log  main;
+
+        location / {
+            root   html;
+            index  index.html index.htm;
+        }
+
+        #error_page  404              /404.html;
+
+        # redirect server error pages to the static page /50x.html
+        #
+        error_page   500 502 503 504  /50x.html;
+        location = /50x.html {
+            root   html;
+        }
+
+        # proxy the PHP scripts to Apache listening on 127.0.0.1:80
+        #
+        #location ~ \.php$ {
+        #    proxy_pass   http://127.0.0.1;
+        #}
+
+        # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+        #
+        #location ~ \.php$ {
+        #    root           html;
+        #    fastcgi_pass   127.0.0.1:9000;
+        #    fastcgi_index  index.php;
+        #    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
+        #    include        fastcgi_params;
+        #}
+
+        # deny access to .htaccess files, if Apache's document root
+        # concurs with nginx's one
+        #
+        #location ~ /\.ht {
+        #    deny  all;
+        #}
+    }
+
+
+    # another virtual host using mix of IP-, name-, and port-based configuration
+    #
+    #server {
+    #    listen       8000;
+    #    listen       somename:8080;
+    #    server_name  somename  alias  another.alias;
+
+    #    location / {
+    #        root   html;
+    #        index  index.html index.htm;
+    #    }
+    #}
+
+
+    # HTTPS server
+    #
+    #server {
+    #    listen       443 ssl;
+    #    server_name  localhost;
+
+    #    ssl_certificate      cert.pem;
+    #    ssl_certificate_key  cert.key;
+
+    #    ssl_session_cache    shared:SSL:1m;
+    #    ssl_session_timeout  5m;
+
+    #    ssl_ciphers  HIGH:!aNULL:!MD5;
+    #    ssl_prefer_server_ciphers  on;
+
+    #    location / {
+    #        root   html;
+    #        index  index.html index.htm;
+    #    }
+    #}
+
+}
+
+프록시 - 자신의 ip주소를 숨기는 것
+	- 주소 접속 불가한 국가에서 우회 & 회사 사내서버에 사용
+
+리버스 프록시 - 서버 주소를 숨기는것(정적인 페이지는 자신이 처리 나머지는 백엔드에서)
+	→ 보안이 정적페이지에 집중
+
+VPN - 더더욱 보안에 특화된거
+
+LoadBalancing - 특정 서버에 과중되지 않게 골고루 분배해주는거
+
+cashing - 자주 사용하는 것을 따로 보관해두는거
+ 	→ 대신에 한시간에 한번만 업데이트함: 실시간 아님
+
